@@ -1,0 +1,1311 @@
+{
+  "metadata": {
+    "version": "3.0",
+    "total_schemes": 25,
+    "central_schemes": 15,
+    "state_schemes": 10,
+    "last_updated": "2025-03",
+    "source": "Government of India Official Portals & State Government Portals",
+    "description": "Curated dataset of 25 high-impact Indian government welfare schemes (15 Central + 10 State) for AI-powered multilingual scheme assistant"
+  },
+  "schemes": [
+    {
+      "scheme_id": "SCH-AGR-001",
+      "scheme_name": "PM Kisan Samman Nidhi",
+      "short_name": "PM Kisan",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Agriculture",
+      "subcategory": "Income Support",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "official_url": "https://pmkisan.gov.in",
+      "helpline": "155261",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": ["farmer"],
+        "annual_income_limit": null,
+        "land_required": true,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Income taxpayers", "Government employees", "Professionals (doctors, lawyers, CAs)"],
+        "special_categories": [],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "₹6,000 per year in 3 equal installments of ₹2,000",
+        "amount": 6000,
+        "frequency": "annual",
+        "type": "Direct Benefit Transfer (DBT)",
+        "additional_perks": []
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Bank Account (linked to Aadhaar)",
+        "Land Ownership Proof"
+      ],
+      "application": {
+        "mode": ["Online"],
+        "steps": [
+          "Visit pmkisan.gov.in",
+          "Click on 'New Farmer Registration'",
+          "Enter Aadhaar and land details",
+          "Submit form and track status online"
+        ],
+        "apply_url": "https://pmkisan.gov.in/RegistrationForm.aspx"
+      },
+      "languages_supported": ["Hindi", "English", "Tamil", "Telugu", "Bengali", "Marathi", "Gujarati"],
+      "tags": ["farmer", "income support", "DBT", "rural", "land owner"]
+    },
+    {
+      "scheme_id": "SCH-HLT-001",
+      "scheme_name": "Ayushman Bharat PM-JAY",
+      "short_name": "PM-JAY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Health",
+      "subcategory": "Health Insurance",
+      "ministry": "Ministry of Health & Family Welfare",
+      "official_url": "https://pmjay.gov.in",
+      "helpline": "14555",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": ["Economically Weaker Sections as per SECC 2011"],
+        "eligibility_basis": "Socio-Economic Caste Census (SECC) 2011 deprivation and occupational criteria",
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Cashless health insurance up to ₹5 lakh per family per year",
+        "amount": 500000,
+        "frequency": "annual",
+        "type": "Insurance / Cashless Treatment",
+        "additional_perks": [
+          "Covers secondary and tertiary hospitalization",
+          "Valid at 25,000+ empanelled hospitals nationwide"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Ration Card",
+        "Any government-issued photo ID"
+      ],
+      "application": {
+        "mode": ["Offline (CSC)", "Helpline"],
+        "steps": [
+          "Visit nearest Common Service Centre (CSC)",
+          "Check eligibility at pmjay.gov.in or helpline 14555",
+          "Register and get Ayushman card",
+          "Use card at any empanelled hospital for cashless treatment"
+        ],
+        "apply_url": "https://mera.pmjay.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Tamil", "Telugu", "Bengali", "Kannada", "Malayalam"],
+      "tags": ["health", "insurance", "hospital", "BPL", "cashless", "family coverage"]
+    },
+    {
+      "scheme_id": "SCH-HSG-001",
+      "scheme_name": "Pradhan Mantri Awas Yojana - Urban",
+      "short_name": "PMAY-U",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Housing",
+      "subcategory": "Home Loan Subsidy",
+      "ministry": "Ministry of Housing & Urban Affairs",
+      "official_url": "https://pmaymis.gov.in",
+      "helpline": "1800-11-6163",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": 1800000,
+        "income_segments": {
+          "EWS": "Up to ₹3 lakh/year",
+          "LIG": "₹3–6 lakh/year",
+          "MIG_I": "₹6–12 lakh/year",
+          "MIG_II": "₹12–18 lakh/year"
+        },
+        "land_required": false,
+        "gender": "any",
+        "residence": "urban",
+        "house_owner": false,
+        "exclusions": ["Must not own a pucca house anywhere in India"],
+        "special_categories": [],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Interest subsidy of 3%–6.5% on home loans; maximum subsidy up to ₹2.67 lakh",
+        "amount": 267000,
+        "frequency": "one-time subsidy",
+        "type": "Loan Interest Subsidy",
+        "additional_perks": [
+          "Subsidy directly credited to loan account",
+          "Reduces EMI burden significantly"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Income Certificate",
+        "Bank Details",
+        "Property / Land Documents"
+      ],
+      "application": {
+        "mode": ["Online", "Bank / Housing Finance Company"],
+        "steps": [
+          "Visit pmaymis.gov.in",
+          "Select income category (EWS / LIG / MIG)",
+          "Fill application form and upload documents",
+          "Track application status online"
+        ],
+        "apply_url": "https://pmaymis.gov.in"
+      },
+      "languages_supported": ["Hindi", "English"],
+      "tags": ["housing", "home loan", "urban", "subsidy", "EWS", "LIG", "MIG", "first home"]
+    },
+    {
+      "scheme_id": "SCH-BIZ-001",
+      "scheme_name": "Pradhan Mantri Mudra Yojana",
+      "short_name": "PM Mudra",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Business",
+      "subcategory": "MSME Loan",
+      "ministry": "Ministry of Finance",
+      "official_url": "https://mudra.org.in",
+      "helpline": "1800-180-1111",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": ["small business owner", "entrepreneur", "self-employed"],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Farm sector / agricultural activities not covered"],
+        "special_categories": [],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Collateral-free business loans in 4 tiers",
+        "loan_tiers": {
+          "Shishu": "Up to ₹50,000",
+          "Kishore": "₹50,001 to ₹5 lakh",
+          "Tarun": "₹5 lakh to ₹10 lakh",
+          "Tarun_Plus": "Up to ₹20 lakh (Budget 2024-25)"
+        },
+        "amount": 2000000,
+        "frequency": "one-time loan",
+        "type": "Collateral-Free Loan",
+        "additional_perks": [
+          "No collateral required",
+          "Mudra RuPay card for working capital"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Business Plan or Proof of Existing Business",
+        "Bank Statement (last 6 months)",
+        "Passport Photo"
+      ],
+      "application": {
+        "mode": ["Offline (Bank / MFI)", "Online via Udyamimitra"],
+        "steps": [
+          "Visit any nationalized/private bank, RRB, or MFI",
+          "Fill Mudra loan application form",
+          "Submit required documents",
+          "Loan disbursed after approval"
+        ],
+        "apply_url": "https://www.udyamimitra.in"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via bank branches"],
+      "tags": ["business", "loan", "MSME", "self-employment", "startup", "entrepreneur", "women"]
+    },
+    {
+      "scheme_id": "SCH-EDU-001",
+      "scheme_name": "National Scholarship Portal",
+      "short_name": "NSP",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Education",
+      "subcategory": "Student Scholarship",
+      "ministry": "Ministry of Electronics & IT (Platform) / Multiple Ministries",
+      "official_url": "https://scholarships.gov.in",
+      "helpline": "0120-6619540",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": ["student"],
+        "annual_income_limit": 350000,
+        "income_note": "Varies by scholarship: ₹1 lakh to ₹3.5 lakh depending on scheme and ministry",
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": ["SC", "ST", "OBC", "Minority", "Differently Abled"],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Financial assistance from ₹1,000 to ₹50,000+ per year depending on scholarship and category",
+        "amount": null,
+        "frequency": "annual",
+        "type": "Scholarship / Direct Benefit Transfer",
+        "additional_perks": [
+          "Single portal for 100+ central and state scholarships",
+          "Direct transfer to student bank account"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Income Certificate",
+        "Previous Year Marksheet",
+        "Bank Account",
+        "Caste / Community Certificate (if applicable)"
+      ],
+      "application": {
+        "mode": ["Online"],
+        "steps": [
+          "Visit scholarships.gov.in",
+          "Register with Aadhaar-linked mobile number",
+          "Select applicable scholarship",
+          "Fill form and upload documents before deadline"
+        ],
+        "apply_url": "https://scholarships.gov.in"
+      },
+      "languages_supported": ["Hindi", "English"],
+      "tags": ["student", "scholarship", "education", "minority", "SC", "ST", "OBC", "financial aid"]
+    },
+    {
+      "scheme_id": "SCH-PEN-001",
+      "scheme_name": "Atal Pension Yojana",
+      "short_name": "APY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Pension",
+      "subcategory": "Retirement Security",
+      "ministry": "Ministry of Finance / PFRDA",
+      "official_url": "https://npscra.nsdl.co.in",
+      "helpline": "1800-110-069",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": 40,
+        "occupation": ["unorganized sector worker", "informal worker"],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Income taxpayers (excluded from Oct 2022)"],
+        "special_categories": [],
+        "bank_account_required": true,
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Guaranteed monthly pension of ₹1,000–₹5,000 after age 60",
+        "pension_options": {
+          "minimum": "₹1,000/month",
+          "maximum": "₹5,000/month"
+        },
+        "amount": null,
+        "frequency": "monthly (post retirement at age 60)",
+        "type": "Defined Benefit Pension",
+        "additional_perks": [
+          "Spouse continues receiving pension after subscriber's death",
+          "Nominee receives corpus on spouse's death"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Bank Account (for auto-debit of contribution)",
+        "Active Mobile Number"
+      ],
+      "application": {
+        "mode": ["Bank Branch", "Post Office", "Net Banking"],
+        "steps": [
+          "Visit bank, post office, or use net banking",
+          "Fill APY registration form",
+          "Set up auto-debit for monthly contribution",
+          "Receive APY acknowledgement number"
+        ],
+        "apply_url": "https://enps.nsdl.com/eNPS/NationalPensionSystem.html"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via banks"],
+      "tags": ["pension", "retirement", "unorganized sector", "savings", "old age security"]
+    },
+    {
+      "scheme_id": "SCH-INS-001",
+      "scheme_name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+      "short_name": "PMJJBY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Insurance",
+      "subcategory": "Life Insurance",
+      "ministry": "Ministry of Finance",
+      "official_url": "https://jansuraksha.gov.in",
+      "helpline": "1800-180-1111",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": 50,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": [],
+        "bank_account_required": true,
+        "aadhaar_linked": true,
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Life insurance cover of ₹2 lakh on death; annual premium of only ₹436",
+        "cover_amount": 200000,
+        "annual_premium": 436,
+        "frequency": "annual renewal",
+        "type": "Term Life Insurance",
+        "additional_perks": [
+          "Auto-debit from bank account",
+          "Nominee receives ₹2 lakh on any cause of death"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Bank Account (Aadhaar-linked)"
+      ],
+      "application": {
+        "mode": ["Bank Branch", "Net Banking", "Banking App"],
+        "steps": [
+          "Visit bank or log in to net banking / mobile banking app",
+          "Enroll in PMJJBY scheme",
+          "Provide nominee details",
+          "₹436 auto-debited annually from bank account"
+        ],
+        "apply_url": "https://jansuraksha.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via banks"],
+      "tags": ["life insurance", "death benefit", "low income", "affordable premium", "family protection"]
+    },
+    {
+      "scheme_id": "SCH-INS-002",
+      "scheme_name": "Pradhan Mantri Suraksha Bima Yojana",
+      "short_name": "PMSBY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Insurance",
+      "subcategory": "Accident Insurance",
+      "ministry": "Ministry of Finance",
+      "official_url": "https://jansuraksha.gov.in",
+      "helpline": "1800-180-1111",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": 70,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": [],
+        "bank_account_required": true,
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Accidental death or total disability cover ₹2 lakh; partial disability ₹1 lakh; annual premium ₹20",
+        "cover_amount_death_total_disability": 200000,
+        "cover_amount_partial_disability": 100000,
+        "annual_premium": 20,
+        "frequency": "annual renewal",
+        "type": "Accidental Death & Disability Insurance",
+        "additional_perks": [
+          "Covers accidental death and permanent total/partial disability",
+          "Auto-debit of ₹20/year from bank account"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Bank Account"
+      ],
+      "application": {
+        "mode": ["Bank Branch", "Net Banking", "Banking App"],
+        "steps": [
+          "Visit bank or use net banking / banking app",
+          "Enroll in PMSBY scheme",
+          "Provide nominee details",
+          "₹20 auto-debited annually"
+        ],
+        "apply_url": "https://jansuraksha.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via banks"],
+      "tags": ["accident insurance", "disability", "₹20 premium", "low cost", "financial protection"]
+    },
+    {
+      "scheme_id": "SCH-EMP-001",
+      "scheme_name": "Mahatma Gandhi National Rural Employment Guarantee Act",
+      "short_name": "MGNREGA",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Employment",
+      "subcategory": "Rural Wage Employment",
+      "ministry": "Ministry of Rural Development",
+      "official_url": "https://nrega.nic.in",
+      "helpline": "1800-111-555",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": ["any adult willing to do unskilled manual work"],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "rural",
+        "exclusions": [],
+        "special_categories": [],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Guaranteed 100 days of paid wage employment per household per year at ₹200–₹350/day",
+        "days_guaranteed": 100,
+        "wage_range": "₹200–₹350 per day (varies by state)",
+        "frequency": "on-demand (within 15 days of application)",
+        "type": "Wage Employment",
+        "additional_perks": [
+          "Work within 5 km of residence",
+          "Unemployment allowance if work not provided in 15 days"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Bank or Post Office Account",
+        "Job Card (issued free by Gram Panchayat)"
+      ],
+      "application": {
+        "mode": ["Offline (Gram Panchayat)"],
+        "steps": [
+          "Visit Gram Panchayat office",
+          "Register household and obtain Job Card (free)",
+          "Submit written demand for work",
+          "Work allocated within 15 days"
+        ],
+        "apply_url": "https://nrega.nic.in"
+      },
+      "languages_supported": ["Hindi", "English", "All regional languages via Gram Panchayat"],
+      "tags": ["rural employment", "wages", "job card", "unskilled labor", "panchayat", "100 days guarantee"]
+    },
+    {
+      "scheme_id": "SCH-FOD-001",
+      "scheme_name": "PM Garib Kalyan Anna Yojana",
+      "short_name": "PMGKAY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Food Security",
+      "subcategory": "Free Ration",
+      "ministry": "Ministry of Food & Public Distribution",
+      "official_url": "https://dfpd.gov.in",
+      "helpline": "1967",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": [
+          "Antyodaya Anna Yojana (AAY) cardholders",
+          "Priority Household (PHH) ration cardholders"
+        ],
+        "ration_card_required": true,
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "5 kg free food grain (wheat/rice) per person per month under NFSA",
+        "grain_per_person_monthly": "5 kg",
+        "frequency": "monthly",
+        "type": "In-Kind Benefit / Free Ration",
+        "additional_perks": [
+          "Completely free (merged into NFSA from Jan 2023)",
+          "Available at all Fair Price Shops nationwide"
+        ]
+      },
+      "documents_required": [
+        "Ration Card (AAY or PHH)",
+        "Aadhaar Card (for biometric authentication at ration shop)"
+      ],
+      "application": {
+        "mode": ["Automatic for ration cardholders", "Ration Shop"],
+        "steps": [
+          "Obtain Ration Card from local food office or CSC if not held",
+          "Visit nearest Fair Price Shop monthly",
+          "Authenticate via Aadhaar biometric on ePoS machine",
+          "Collect monthly free grain allocation"
+        ],
+        "apply_url": "https://dfpd.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "All regional languages via ration shops"],
+      "tags": ["food", "ration", "BPL", "free grain", "food security", "AAY", "PHH", "NFSA"]
+    },
+    {
+      "scheme_id": "SCH-LAB-001",
+      "scheme_name": "e-Shram Portal",
+      "short_name": "e-Shram",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Labour",
+      "subcategory": "Informal Worker Registration",
+      "ministry": "Ministry of Labour & Employment",
+      "official_url": "https://eshram.gov.in",
+      "helpline": "14434",
+      "eligibility": {
+        "min_age": 16,
+        "max_age": 59,
+        "occupation": [
+          "informal worker", "unorganized sector worker", "gig worker",
+          "migrant worker", "domestic worker", "construction worker"
+        ],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Workers already covered under EPFO or ESIC not eligible"],
+        "special_categories": ["Migrant workers", "Gig workers", "Platform workers"],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "e-Shram card with Universal Account Number (UAN); ₹2 lakh accident insurance; priority welfare access",
+        "accident_cover": 200000,
+        "frequency": "ongoing",
+        "type": "Registration + Insurance + Social Security Gateway",
+        "additional_perks": [
+          "Portable UAN card recognized across states",
+          "Priority access to government welfare schemes",
+          "Used for disaster relief and emergency DBT"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Aadhaar-linked mobile number (for OTP verification)",
+        "Bank Account"
+      ],
+      "application": {
+        "mode": ["Online (Self-registration)", "CSC Center"],
+        "steps": [
+          "Visit eshram.gov.in",
+          "Register using Aadhaar number and mobile OTP",
+          "Fill in occupation, income, and location details",
+          "Download e-Shram card instantly (UAN auto-generated)"
+        ],
+        "apply_url": "https://register.eshram.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Tamil", "Telugu", "Bengali", "Odia", "Punjabi", "Gujarati", "Marathi", "Kannada", "Malayalam"],
+      "tags": ["informal worker", "labour", "gig worker", "migrant", "construction", "domestic worker", "UAN"]
+    },
+    {
+      "scheme_id": "SCH-SKL-001",
+      "scheme_name": "PM Vishwakarma Yojana",
+      "short_name": "PM Vishwakarma",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Skill Development",
+      "subcategory": "Traditional Artisan Support",
+      "ministry": "Ministry of MSME / Ministry of Skill Development & Entrepreneurship",
+      "official_url": "https://pmvishwakarma.gov.in",
+      "helpline": "18002677777",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": [
+          "carpenter", "blacksmith", "goldsmith", "potter", "weaver",
+          "cobbler", "barber", "tailor", "mason", "boat maker",
+          "toy maker", "sculptor", "lock maker", "fishing net maker",
+          "washerman", "garland maker", "doll maker", "hammer & tool kit maker"
+        ],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Only one member per family eligible"],
+        "special_categories": ["Traditional artisans and craftspeople (18 listed trades)"],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Free skill training + ₹500/day stipend + toolkit grant ₹15,000 + credit up to ₹3 lakh at 5%",
+        "skill_training": "Free (5–15 days basic + advanced training at TCoE)",
+        "stipend_per_day": 500,
+        "toolkit_grant": 15000,
+        "credit_limit": 300000,
+        "interest_rate": "5% concessional",
+        "frequency": "one-time training + revolving credit",
+        "type": "Skill Training + Grant + Concessional Loan",
+        "additional_perks": [
+          "PM Vishwakarma Certificate and digital ID card",
+          "Digital transaction cashback incentives",
+          "Market linkage and branding support"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Mobile Number",
+        "Bank Account",
+        "Proof of trade (self-declaration or Gram Panchayat / ULB verification)"
+      ],
+      "application": {
+        "mode": ["Online", "CSC Center", "Gram Panchayat / ULB"],
+        "steps": [
+          "Register at pmvishwakarma.gov.in or nearest CSC",
+          "Verify trade through Gram Panchayat or Urban Local Body",
+          "Attend free skill training at Training Centre of Excellence (TCoE)",
+          "Receive PM Vishwakarma card, toolkit grant, and credit access"
+        ],
+        "apply_url": "https://pmvishwakarma.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via training centres"],
+      "tags": ["artisan", "craftsman", "skill", "toolkit", "traditional occupation", "concessional loan", "rural", "MSME"]
+    },
+    {
+      "scheme_id": "SCH-ENR-001",
+      "scheme_name": "Pradhan Mantri Ujjwala Yojana",
+      "short_name": "PMUY",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Energy",
+      "subcategory": "Clean Cooking Fuel",
+      "ministry": "Ministry of Petroleum & Natural Gas",
+      "official_url": "https://pmuy.gov.in",
+      "helpline": "1906",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "rural / BPL household",
+        "exclusions": ["Households already having LPG connection"],
+        "special_categories": ["BPL Women", "SC/ST households", "PMAY beneficiaries", "Antyodaya households"],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Free LPG connection (cylinder + stove) and first refill subsidy for BPL women",
+        "amount": null,
+        "frequency": "one-time connection + ongoing refill subsidy",
+        "type": "Subsidy / Free Connection",
+        "additional_perks": [
+          "EMI facility for stove and first refill",
+          "Deposit-free LPG connection"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "BPL Ration Card",
+        "Bank Account",
+        "Passport Size Photo"
+      ],
+      "application": {
+        "mode": ["Offline (LPG Distributor)"],
+        "steps": [
+          "Visit nearest LPG distributor (HP Gas / Indane / Bharat Gas)",
+          "Fill KYC and PMUY application form",
+          "Submit BPL and identity documents",
+          "Connection issued after verification"
+        ],
+        "apply_url": "https://pmuy.gov.in"
+      },
+      "languages_supported": ["Hindi", "English", "Regional languages via distributors"],
+      "tags": ["LPG", "BPL", "women", "cooking gas", "rural", "clean energy", "free connection"]
+    },
+    {
+      "scheme_id": "SCH-STR-001",
+      "scheme_name": "Startup India Seed Fund Scheme",
+      "short_name": "SISFS",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Startup",
+      "subcategory": "Early-Stage Startup Funding",
+      "ministry": "Ministry of Commerce & Industry (DPIIT)",
+      "official_url": "https://seedfund.startupindia.gov.in",
+      "helpline": "1800-115-565",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": ["startup founder"],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "any",
+        "exclusions": ["Must not have received investment from central Govt schemes previously"],
+        "special_categories": [],
+        "startup_incorporated_within_years": 2,
+        "dpiit_recognition_required": true,
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Grant up to ₹20 lakh for PoC/prototype; loan up to ₹50 lakh for market entry",
+        "grant": "Up to ₹20 lakh (proof of concept / prototype)",
+        "loan_or_debenture": "Up to ₹50 lakh (market entry / commercialization)",
+        "frequency": "one-time (milestone-based disbursement)",
+        "type": "Grant + Soft Loan",
+        "additional_perks": [
+          "Disbursed through empanelled incubators",
+          "Mentorship and incubation ecosystem access"
+        ]
+      },
+      "documents_required": [
+        "DPIIT Startup Recognition Certificate",
+        "Detailed Business Plan / Pitch Deck",
+        "Certificate of Incorporation",
+        "Bank Account Details"
+      ],
+      "application": {
+        "mode": ["Online via Seed Fund Portal"],
+        "steps": [
+          "Register startup at startupindia.gov.in and get DPIIT recognition",
+          "Apply through an empanelled incubator on seedfund portal",
+          "Incubator evaluates the application",
+          "Funds disbursed in tranches based on milestones"
+        ],
+        "apply_url": "https://seedfund.startupindia.gov.in"
+      },
+      "languages_supported": ["Hindi", "English"],
+      "tags": ["startup", "seed fund", "grant", "DPIIT", "incubator", "early stage", "innovation", "founder"]
+    },
+    {
+      "scheme_id": "SCH-WMN-001",
+      "scheme_name": "Beti Bachao Beti Padhao",
+      "short_name": "BBBP",
+      "level": "central",
+      "applicable_state": "all",
+      "category": "Women Empowerment",
+      "subcategory": "Girl Child Education & Welfare",
+      "ministry": "Ministry of Women & Child Development",
+      "official_url": "https://wcd.nic.in/bbbp-schemes",
+      "helpline": "1091",
+      "eligibility": {
+        "min_age": 0,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "any",
+        "exclusions": [],
+        "special_categories": ["Girl children and their families"],
+        "state": "all"
+      },
+      "benefits": {
+        "summary": "Awareness campaigns + linkage with SSY savings + state conditional cash transfers + school enrollment support",
+        "frequency": "ongoing",
+        "type": "Awareness + Linked Financial Benefits",
+        "additional_perks": [
+          "State-specific conditional cash transfers",
+          "Linkage with Sukanya Samriddhi Yojana",
+          "Free education support and enrollment drives",
+          "Anganwadi-level monitoring of girl child welfare"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card (parent/guardian)",
+        "Birth Certificate of girl child",
+        "Bank Account of parent/guardian"
+      ],
+      "application": {
+        "mode": ["Anganwadi Centre", "School", "CSC"],
+        "steps": [
+          "Register girl child at local Anganwadi centre",
+          "Open Sukanya Samriddhi account at bank or post office",
+          "Avail state-specific conditional cash transfer benefits",
+          "Ensure girl's enrollment in school and regular attendance"
+        ],
+        "apply_url": "https://wcd.nic.in/bbbp-schemes"
+      },
+      "languages_supported": ["Hindi", "English", "All regional languages via Anganwadi"],
+      "tags": ["girl child", "education", "women empowerment", "beti bachao", "school enrollment", "awareness"]
+    },
+    {
+      "scheme_id": "SCH-ST-MH-001",
+      "scheme_name": "Mahatma Jyotirao Phule Jan Arogya Yojana",
+      "short_name": "MJPJAY",
+      "level": "state",
+      "applicable_state": "Maharashtra",
+      "category": "Health",
+      "subcategory": "Health Insurance",
+      "ministry": "Government of Maharashtra – Health Department",
+      "official_url": "https://www.jeevandayee.gov.in",
+      "helpline": "155388",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "Maharashtra",
+        "exclusions": [],
+        "special_categories": ["Yellow / Orange ration card holders", "Farmers affected by natural calamities"],
+        "state": "Maharashtra"
+      },
+      "benefits": {
+        "summary": "Cashless treatment up to ₹5 lakh per family per year at empanelled hospitals across Maharashtra",
+        "amount": 500000,
+        "frequency": "annual",
+        "type": "State Health Insurance / Cashless Treatment",
+        "additional_perks": [
+          "Covers 1,000+ procedures across 30+ specialities",
+          "Works in conjunction with PM-JAY for enhanced coverage",
+          "Covers farmer families affected by drought/floods"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Yellow or Orange Ration Card",
+        "Domicile / Residence Proof of Maharashtra"
+      ],
+      "application": {
+        "mode": ["Offline (Empanelled Hospital)", "CSC"],
+        "steps": [
+          "Visit any empanelled hospital in Maharashtra",
+          "Show ration card and Aadhaar at Aarogya Mitra counter",
+          "Eligibility verified on-spot",
+          "Avail cashless treatment immediately"
+        ],
+        "apply_url": "https://www.jeevandayee.gov.in"
+      },
+      "languages_supported": ["Marathi", "Hindi", "English"],
+      "tags": ["health", "insurance", "Maharashtra", "cashless", "hospital", "farmer", "yellow card", "orange card"]
+    },
+    {
+      "scheme_id": "SCH-ST-RJ-001",
+      "scheme_name": "Chiranjeevi Swasthya Bima Yojana",
+      "short_name": "Chiranjeevi Yojana",
+      "level": "state",
+      "applicable_state": "Rajasthan",
+      "category": "Health",
+      "subcategory": "Health Insurance",
+      "ministry": "Government of Rajasthan – Health Department",
+      "official_url": "https://chiranjeevi.rajasthan.gov.in",
+      "helpline": "181",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "Rajasthan",
+        "exclusions": [],
+        "special_categories": ["All families registered on Jan Aadhaar card"],
+        "state": "Rajasthan"
+      },
+      "benefits": {
+        "summary": "Cashless treatment up to ₹25 lakh per family per year (one of the highest state health cover in India)",
+        "amount": 2500000,
+        "frequency": "annual",
+        "type": "State Health Insurance / Cashless Treatment",
+        "additional_perks": [
+          "Covers OPD, IPD, and critical illness",
+          "No premium for BPL and state govt employee families",
+          "₹850/year premium for others"
+        ]
+      },
+      "documents_required": [
+        "Jan Aadhaar Card",
+        "Aadhaar Card",
+        "Rajasthan Domicile Proof"
+      ],
+      "application": {
+        "mode": ["Online", "CSC / E-Mitra Kiosk"],
+        "steps": [
+          "Visit chiranjeevi.rajasthan.gov.in or nearest E-Mitra kiosk",
+          "Register using Jan Aadhaar number",
+          "Pay premium if applicable (₹850 for non-BPL families)",
+          "Download policy and use at empanelled hospitals"
+        ],
+        "apply_url": "https://chiranjeevi.rajasthan.gov.in"
+      },
+      "languages_supported": ["Hindi", "English"],
+      "tags": ["health", "insurance", "Rajasthan", "cashless", "₹25 lakh cover", "Jan Aadhaar", "OPD", "IPD"]
+    },
+    {
+      "scheme_id": "SCH-ST-TN-001",
+      "scheme_name": "Kalaignar Magalir Urimai Thittam",
+      "short_name": "KMUT",
+      "level": "state",
+      "applicable_state": "Tamil Nadu",
+      "category": "Women Empowerment",
+      "subcategory": "Women Financial Support",
+      "ministry": "Government of Tamil Nadu – Social Welfare Department",
+      "official_url": "https://www.tn.gov.in",
+      "helpline": "14567",
+      "eligibility": {
+        "min_age": 21,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "Tamil Nadu",
+        "exclusions": ["Government employees", "Income taxpayers"],
+        "special_categories": ["Women head of household in Tamil Nadu"],
+        "state": "Tamil Nadu"
+      },
+      "benefits": {
+        "summary": "₹1,000 per month financial assistance directly to women heads of households in Tamil Nadu",
+        "amount": 12000,
+        "frequency": "monthly (₹1,000/month)",
+        "type": "Direct Benefit Transfer (DBT)",
+        "additional_perks": [
+          "Directly credited to woman's bank account",
+          "No conditions on end-use of funds"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Ration Card (as head of household)",
+        "Bank Account linked to Aadhaar",
+        "Tamil Nadu Domicile Proof"
+      ],
+      "application": {
+        "mode": ["Online", "CSC / Village Admin Office"],
+        "steps": [
+          "Visit nearest Village Administrative Officer (VAO) or CSC",
+          "Submit Aadhaar and ration card as head of household",
+          "Verification done by VAO",
+          "₹1,000 credited monthly to bank account after approval"
+        ],
+        "apply_url": "https://www.tn.gov.in"
+      },
+      "languages_supported": ["Tamil", "English"],
+      "tags": ["women", "financial support", "Tamil Nadu", "DBT", "monthly allowance", "head of household"]
+    },
+    {
+      "scheme_id": "SCH-ST-KA-001",
+      "scheme_name": "Gruha Lakshmi Scheme",
+      "short_name": "Gruha Lakshmi",
+      "level": "state",
+      "applicable_state": "Karnataka",
+      "category": "Women Empowerment",
+      "subcategory": "Women Financial Support",
+      "ministry": "Government of Karnataka – Women & Child Development Department",
+      "official_url": "https://sevasindhu.karnataka.gov.in",
+      "helpline": "1902",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "Karnataka",
+        "exclusions": ["Government employees", "Income taxpayers", "BPL card holders already covered under other DBT"],
+        "special_categories": ["Women head of household with BPL / APL ration card in Karnataka"],
+        "state": "Karnataka"
+      },
+      "benefits": {
+        "summary": "₹2,000 per month directly to women heads of household in Karnataka",
+        "amount": 24000,
+        "frequency": "monthly (₹2,000/month)",
+        "type": "Direct Benefit Transfer (DBT)",
+        "additional_perks": [
+          "One of the highest women DBT amounts among Indian states",
+          "Credited directly to woman's bank account"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Ration Card (as head of household)",
+        "Bank Account linked to Aadhaar",
+        "Karnataka Domicile Proof"
+      ],
+      "application": {
+        "mode": ["Online via Seva Sindhu", "CSC / Gram Panchayat"],
+        "steps": [
+          "Visit sevasindhu.karnataka.gov.in or nearest CSC",
+          "Register with Aadhaar and ration card details",
+          "Submit supporting documents",
+          "₹2,000 credited monthly after verification"
+        ],
+        "apply_url": "https://sevasindhu.karnataka.gov.in"
+      },
+      "languages_supported": ["Kannada", "Hindi", "English"],
+      "tags": ["women", "financial support", "Karnataka", "DBT", "₹2000 monthly", "head of household", "Gruha Lakshmi"]
+    },
+    {
+      "scheme_id": "SCH-ST-WB-001",
+      "scheme_name": "Lakshmir Bhandar Scheme",
+      "short_name": "Lakshmir Bhandar",
+      "level": "state",
+      "applicable_state": "West Bengal",
+      "category": "Women Empowerment",
+      "subcategory": "Women Financial Support",
+      "ministry": "Government of West Bengal – Women & Child Development & Social Welfare Department",
+      "official_url": "https://socialsecurity.wb.gov.in",
+      "helpline": "1800-103-0009",
+      "eligibility": {
+        "min_age": 25,
+        "max_age": 60,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "West Bengal",
+        "exclusions": ["Government employees", "Income taxpayers"],
+        "special_categories": ["SC/ST women: ₹1,000/month", "General category women: ₹500/month"],
+        "state": "West Bengal"
+      },
+      "benefits": {
+        "summary": "Monthly financial support: ₹1,000 for SC/ST women and ₹500 for general category women",
+        "amount_sc_st": 12000,
+        "amount_general": 6000,
+        "frequency": "monthly",
+        "type": "Direct Benefit Transfer (DBT)",
+        "additional_perks": [
+          "No conditions on usage of funds",
+          "Part of West Bengal's Duare Sarkar initiative"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "West Bengal Ration Card",
+        "Bank Account linked to Aadhaar",
+        "Caste Certificate (for SC/ST applicants)"
+      ],
+      "application": {
+        "mode": ["Offline (Duare Sarkar Camp)", "CSC / Block Office"],
+        "steps": [
+          "Visit nearest Duare Sarkar camp or block office",
+          "Fill application form with Aadhaar and ration card",
+          "Submit supporting documents",
+          "Monthly DBT credited after approval"
+        ],
+        "apply_url": "https://socialsecurity.wb.gov.in"
+      },
+      "languages_supported": ["Bengali", "Hindi", "English"],
+      "tags": ["women", "financial support", "West Bengal", "DBT", "SC/ST", "Duare Sarkar", "monthly allowance"]
+    },
+    {
+      "scheme_id": "SCH-ST-UP-001",
+      "scheme_name": "Kanya Sumangala Yojana",
+      "short_name": "MKSY",
+      "level": "state",
+      "applicable_state": "Uttar Pradesh",
+      "category": "Women Empowerment",
+      "subcategory": "Girl Child Education & Welfare",
+      "ministry": "Government of Uttar Pradesh – Women & Child Development Department",
+      "official_url": "https://mksy.up.gov.in",
+      "helpline": "1800-180-5555",
+      "eligibility": {
+        "min_age": 0,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": 300000,
+        "land_required": false,
+        "gender": "female",
+        "residence": "Uttar Pradesh",
+        "exclusions": ["Families with more than 2 children (with exceptions for twins)"],
+        "special_categories": ["Girl children born on or after 1 April 2019"],
+        "state": "Uttar Pradesh"
+      },
+      "benefits": {
+        "summary": "₹15,000 total financial assistance to girl child in 6 installments linked to education milestones",
+        "installments": {
+          "at_birth": "₹2,000",
+          "at_1_year_vaccination": "₹1,000",
+          "class_1_admission": "₹2,000",
+          "class_6_admission": "₹2,000",
+          "class_9_admission": "₹3,000",
+          "graduation_or_diploma": "₹5,000"
+        },
+        "total_amount": 15000,
+        "frequency": "milestone-based installments",
+        "type": "Conditional Cash Transfer",
+        "additional_perks": [
+          "Linked to girl's education and health milestones",
+          "Reduces school dropout rates for girls"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card (parent/guardian)",
+        "Girl Child's Birth Certificate",
+        "UP Domicile / Residence Certificate",
+        "Income Certificate (below ₹3 lakh)",
+        "Bank Account of parent"
+      ],
+      "application": {
+        "mode": ["Online"],
+        "steps": [
+          "Visit mksy.up.gov.in",
+          "Register with mobile number and Aadhaar",
+          "Fill girl child details and select applicable installment stage",
+          "Upload supporting documents and submit"
+        ],
+        "apply_url": "https://mksy.up.gov.in"
+      },
+      "languages_supported": ["Hindi", "English"],
+      "tags": ["girl child", "education", "Uttar Pradesh", "conditional cash transfer", "school milestone", "birth", "graduation"]
+    },
+    {
+      "scheme_id": "SCH-ST-GJ-001",
+      "scheme_name": "Mukhyamantri Mahila Utkarsh Yojana",
+      "short_name": "MMUY",
+      "level": "state",
+      "applicable_state": "Gujarat",
+      "category": "Business",
+      "subcategory": "Women Self-Help Group Loan",
+      "ministry": "Government of Gujarat – Women & Child Development Department",
+      "official_url": "https://mmuy.gujarat.gov.in",
+      "helpline": "1800-233-5500",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": ["SHG member", "women entrepreneur"],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "female",
+        "residence": "Gujarat",
+        "exclusions": [],
+        "special_categories": ["Women Self-Help Group (SHG) members in urban and rural Gujarat"],
+        "state": "Gujarat"
+      },
+      "benefits": {
+        "summary": "Interest-free loan up to ₹1 lakh per SHG member for starting or expanding small business",
+        "amount": 100000,
+        "frequency": "one-time loan (renewable)",
+        "type": "Interest-Free Loan",
+        "additional_perks": [
+          "Zero interest for the loan tenure",
+          "Covers both urban and rural SHG members",
+          "Loan for livelihood and micro-enterprise activities"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "SHG Membership Certificate",
+        "Bank Account",
+        "Gujarat Domicile Proof"
+      ],
+      "application": {
+        "mode": ["Offline (District Rural Development Agency / DRDA)", "CSC"],
+        "steps": [
+          "Form or join a registered SHG in Gujarat",
+          "Apply through DRDA or district Women & Child Development office",
+          "Submit SHG membership and identity documents",
+          "Loan sanctioned and disbursed to SHG bank account"
+        ],
+        "apply_url": "https://mmuy.gujarat.gov.in"
+      },
+      "languages_supported": ["Gujarati", "Hindi", "English"],
+      "tags": ["women", "SHG", "loan", "Gujarat", "interest-free", "self-help group", "micro-enterprise", "urban", "rural"]
+    },
+    {
+      "scheme_id": "SCH-ST-TS-001",
+      "scheme_name": "Rythu Bandhu Scheme",
+      "short_name": "Rythu Bandhu",
+      "level": "state",
+      "applicable_state": "Telangana",
+      "category": "Agriculture",
+      "subcategory": "Farmer Investment Support",
+      "ministry": "Government of Telangana – Agriculture Department",
+      "official_url": "https://rythubandhu.telangana.gov.in",
+      "helpline": "1800-425-0199",
+      "eligibility": {
+        "min_age": 18,
+        "max_age": null,
+        "occupation": ["farmer", "land owner"],
+        "annual_income_limit": null,
+        "land_required": true,
+        "gender": "any",
+        "residence": "Telangana",
+        "exclusions": ["Tenant farmers (only land owners eligible)"],
+        "special_categories": [],
+        "state": "Telangana"
+      },
+      "benefits": {
+        "summary": "₹10,000 per acre per season (₹20,000/acre/year) investment support directly to farmer's bank account",
+        "amount_per_acre_per_season": 10000,
+        "amount_per_acre_per_year": 20000,
+        "frequency": "twice a year (Kharif and Rabi seasons)",
+        "type": "Direct Benefit Transfer (DBT)",
+        "additional_perks": [
+          "One of the highest per-acre farmer income support in India",
+          "No upper cap on number of acres",
+          "Directly credited before crop season begins"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Pahani (Land Records / 1B document)",
+        "Bank Account linked to Aadhaar",
+        "Telangana Domicile Proof"
+      ],
+      "application": {
+        "mode": ["Automatic via agriculture department land records", "Offline (Mandal Agriculture Office)"],
+        "steps": [
+          "Ensure land records (Pahani) are updated at local Mandal office",
+          "Link Aadhaar with bank account",
+          "Agriculture department auto-disburses based on land records",
+          "Contact Mandal Agriculture Office if not received"
+        ],
+        "apply_url": "https://rythubandhu.telangana.gov.in"
+      },
+      "languages_supported": ["Telugu", "Hindi", "English"],
+      "tags": ["farmer", "agriculture", "Telangana", "DBT", "per acre support", "Kharif", "Rabi", "investment support"]
+    },
+    {
+      "scheme_id": "SCH-ST-KL-001",
+      "scheme_name": "Karunya Health Scheme",
+      "short_name": "Karunya",
+      "level": "state",
+      "applicable_state": "Kerala",
+      "category": "Health",
+      "subcategory": "Critical Illness Financial Support",
+      "ministry": "Government of Kerala – Health & Family Welfare Department",
+      "official_url": "https://arogyakeralam.gov.in",
+      "helpline": "0471-2300650",
+      "eligibility": {
+        "min_age": null,
+        "max_age": null,
+        "occupation": [],
+        "annual_income_limit": null,
+        "land_required": false,
+        "gender": "any",
+        "residence": "Kerala",
+        "exclusions": [],
+        "special_categories": ["BPL families", "APL families facing catastrophic health expenditure"],
+        "state": "Kerala"
+      },
+      "benefits": {
+        "summary": "Financial assistance up to ₹5 lakh for critical illnesses and treatments not covered under other schemes",
+        "amount": 500000,
+        "frequency": "per illness episode",
+        "type": "Critical Illness Financial Assistance",
+        "additional_perks": [
+          "Covers treatments like cancer, organ transplant, cardiac surgery",
+          "Supports both BPL and APL families in financial distress",
+          "Managed through Kerala's Local Self-Government institutions"
+        ]
+      },
+      "documents_required": [
+        "Aadhaar Card",
+        "Ration Card",
+        "Medical Certificate / Hospital Estimate",
+        "Kerala Domicile Proof",
+        "Income Certificate"
+      ],
+      "application": {
+        "mode": ["Offline (Local Self-Government / District Medical Office)"],
+        "steps": [
+          "Obtain medical estimate from treating hospital",
+          "Apply at nearest Local Self-Government (Panchayat / Municipality) office",
+          "Submit income and identity documents",
+          "Assistance sanctioned and disbursed on verification"
+        ],
+        "apply_url": "https://arogyakeralam.gov.in"
+      },
+      "languages_supported": ["Malayalam", "Hindi", "English"],
+      "tags": ["health", "critical illness", "Kerala", "cancer", "cardiac", "financial assistance", "BPL", "APL"]
+    }
+  ]
+}
