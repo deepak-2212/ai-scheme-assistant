@@ -2,29 +2,31 @@ import os
 import json
 from dotenv import load_dotenv
 from openai import OpenAI
-from googletrans import Translator
-from eligibility import check_eligibility   # ✅ NEW
+from eligibility import check_eligibility
+from io import BytesIO
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-translator = Translator()
 
 
 # ---------------------------
-# Translate
+# Translation (SAFE VERSION)
 # ---------------------------
 def to_english(text):
-    return translator.translate(text, dest="en").text
+    return text  # disabled for stability
 
 def to_user_lang(text, lang):
-    return translator.translate(text, dest=lang).text
+    return text  # disabled for stability
 
 
 # ---------------------------
 # Speech to Text
 # ---------------------------
-def speech_to_text(audio_file):
+def speech_to_text(audio_bytes):
+
+    audio_file = BytesIO(audio_bytes)
+    audio_file.name = "voice.wav"
 
     transcript = client.audio.transcriptions.create(
         model="gpt-4o-mini-transcribe",
@@ -35,7 +37,7 @@ def speech_to_text(audio_file):
 
 
 # ---------------------------
-# Extract User Details (UPDATED)
+# Extract User Details
 # ---------------------------
 def extract_user_details(user_input):
 
@@ -68,7 +70,6 @@ Input: {user_input}
     try:
         user_data = json.loads(text)
     except:
-        # fallback (VERY IMPORTANT)
         user_data = {
             "age": 30,
             "gender": "male",
@@ -82,7 +83,7 @@ Input: {user_input}
             "isGovtEmployee": False
         }
 
-    # ensure defaults (avoid crashes)
+    # defaults
     user_data.setdefault("occupation", ["other"])
     user_data.setdefault("hasLand", False)
     user_data.setdefault("hasBankAccount", True)
@@ -143,24 +144,18 @@ Include:
 
 
 # ---------------------------
-# MAIN FUNCTION (UPDATED)
+# MAIN FUNCTION
 # ---------------------------
 def process_query(user_input):
 
-    # detect language
-    lang = translator.detect(user_input).lang
-
-    # translate
+    # no language detection (disabled)
     english = to_english(user_input)
 
-    # extract full user profile
     user_data = extract_user_details(english)
 
-    # load schemes
     with open("schemes.json", encoding="utf-8") as f:
         schemes_data = json.load(f)
 
-    # use advanced eligibility engine
     result = check_eligibility(user_data, schemes_data)
 
     schemes = result["eligible"]
@@ -168,10 +163,8 @@ def process_query(user_input):
     if not schemes:
         return "No matching schemes found."
 
-    # explain
     explanation = explain_schemes(user_data, schemes)
 
-    # translate back
-    final = to_user_lang(explanation, lang)
+    final = to_user_lang(explanation, "en")
 
     return final

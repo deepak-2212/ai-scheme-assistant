@@ -29,6 +29,8 @@ def check_state(user_state, scheme_state):
 
 
 def check_age(user_age, min_age, max_age):
+    if user_age is None:
+        return True
     if min_age is not None and user_age < min_age:
         return False
     if max_age is not None and user_age > max_age:
@@ -43,7 +45,7 @@ def check_gender(user_gender, scheme_gender):
 
 
 def check_income(user_income, limit):
-    if limit is None:
+    if user_income is None or limit is None:
         return True
     return user_income <= limit
 
@@ -157,7 +159,7 @@ def custom_checks(user, scheme_id, notes):
 
 def check_scheme_eligibility(user, scheme):
 
-    e = scheme["eligibility"]
+    e = scheme.get("eligibility", {})
     notes = []
     passed = True
 
@@ -165,7 +167,7 @@ def check_scheme_eligibility(user, scheme):
     if not check_state(user.get("state"), scheme.get("applicable_state")):
         return {
             "status": "ineligible",
-            "scheme_name": scheme["scheme_name"],
+            "scheme_name": scheme.get("scheme_name"),
             "reasons": ["Not applicable for your state"]
         }
 
@@ -206,15 +208,15 @@ def check_scheme_eligibility(user, scheme):
         passed = False
 
     # CUSTOM CHECK
-    if not custom_checks(user, scheme["scheme_id"], notes):
+    if not custom_checks(user, scheme.get("scheme_id"), notes):
         passed = False
 
     return {
         "status": "eligible" if passed else "ineligible",
-        "scheme_name": scheme["scheme_name"],
-        "benefits": scheme["benefits"]["summary"],
+        "scheme_name": scheme.get("scheme_name"),
+        "benefits": scheme.get("benefits", {}).get("summary", ""),
         "reasons": notes,
-        "apply_url": scheme["application"]["apply_url"]
+        "apply_url": scheme.get("application", {}).get("apply_url", "#")
     }
 
 
@@ -227,7 +229,7 @@ def check_eligibility(user, schemes_data):
     eligible = []
     ineligible = []
 
-    for scheme in schemes_data["schemes"]:
+    for scheme in schemes_data.get("schemes", []):
         result = check_scheme_eligibility(user, scheme)
 
         if result["status"] == "eligible":
@@ -239,7 +241,7 @@ def check_eligibility(user, schemes_data):
         "eligible": eligible,
         "ineligible": ineligible,
         "summary": {
-            "total": len(schemes_data["schemes"]),
+            "total": len(schemes_data.get("schemes", [])),
             "eligible": len(eligible),
             "ineligible": len(ineligible)
         }
