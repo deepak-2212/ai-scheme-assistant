@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GovScheme Assistant</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ✅ ADD THIS (important for backend API base URL) -->
+    <script>
+        const BASE_URL = "http://127.0.0.1:8000";
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="brand">
+                    <i class="fa-solid fa-landmark dome-icon"></i>
+                    <div>
+                        <h1>GovScheme Assistant</h1>
+                        <span class="subtitle" id="subtitle-text">AI-Powered Helper</span>
+                    </div>
+                </div>
+                <button id="lang-toggle" class="lang-btn">En / Hi</button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <button id="nav-browse" class="nav-tab active">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span id="tab-browse-text">Browse Schemes</span>
+                </button>
+                <button id="nav-chat" class="nav-tab">
+                    <i class="fa-solid fa-robot"></i>
+                    <span id="tab-chat-text">Ask AI Assistant</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <div class="content-area">
+
+            <!-- 🔍 Browse Section -->
+            <section id="browse-section" class="view-section active">
+                <div class="section-header">
+                    <h2 id="browse-title">Available Government Schemes</h2>
+                    <p id="browse-desc">
+                        Explore all schemes manually or use the AI Assistant to find your match.
+                    </p>
+                </div>
+
+                <!-- ✅ Data will come from backend -->
+                <div class="schemes-grid" id="schemes-grid"></div>
+            </section>
+
+            <!-- 🤖 Chat Section -->
+            <section id="chat-section" class="view-section">
+
+                <main class="chat-container" id="chat-container">
+
+                    <!-- Welcome Message -->
+                    <div class="message ai">
+                        <div class="avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bubble">
+                            <p>Hello! I am your AI-powered Government Scheme Assistant.</p>
+                            <p>Tell me about yourself (e.g., "I am a farmer earning 1 lakh").</p>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="message ai typing-indicator-container" id="typing-indicator" style="display: none;">
+                        <div class="avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bubble typing">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+
+                </main>
+
+                <!-- Input Area -->
+                <footer class="chat-input-area">
+                    <div class="input-wrapper">
+
+                        <button id="mic-btn" class="icon-btn mic-btn">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+
+                        <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
+
+                        <button id="send-btn" class="icon-btn send-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- 📦 Modal -->
+    <div id="scheme-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+
+            <div class="modal-header">
+                <span class="modal-category" id="modal-category"></span>
+                <h2 id="modal-title"></h2>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p id="modal-desc"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Eligibility</h3>
+                    <ul id="modal-eligibility"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Benefits</h3>
+                    <ul id="modal-benefits"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Documents</h3>
+                    <ul id="modal-docs"></ul>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" id="modal-apply" class="apply-btn large-btn" target="_blank">Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
