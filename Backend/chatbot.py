@@ -2,22 +2,23 @@ import os
 import json
 from dotenv import load_dotenv
 from openai import OpenAI
+from deep_translator import GoogleTranslator
 from eligibility import check_eligibility
 from io import BytesIO
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI()
 
 
 # ---------------------------
 # Translation (SAFE VERSION)
 # ---------------------------
 def to_english(text):
-    return text  # disabled for stability
+    return GoogleTranslator(source='auto', target='en').translate(text)
 
 def to_user_lang(text, lang):
-    return text  # disabled for stability
+    return GoogleTranslator(source='en', target=lang).translate(text)
 
 
 # ---------------------------
