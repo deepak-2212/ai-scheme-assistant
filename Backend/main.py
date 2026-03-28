@@ -6,7 +6,9 @@ from chatbot import process_query, speech_to_text
 
 app = FastAPI()
 
+# ─────────────────────────────────────────────
 # CORS (Frontend connection)
+# ─────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -15,34 +17,41 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load schemes
+# Load schemes once
 with open("schemes.json", encoding="utf-8") as f:
     schemes_data = json.load(f)
 
 
-# -----------------------
-# ROOT API (for testing)
-# -----------------------
+# ─────────────────────────────────────────────
+# ROOT API
+# ─────────────────────────────────────────────
 @app.get("/")
 def home():
     return {"message": "AI Scheme Assistant Backend Running 🚀"}
 
 
-# -----------------------
-# CHAT API
-# -----------------------
-@app.get("/chat")
-def chat(query: str):
+# ─────────────────────────────────────────────
+# CHAT API (IMPORTANT)
+# ─────────────────────────────────────────────
+@app.post("/chat")
+def chat(data: dict):
+    user_input = data.get("message", "").strip()
+
+    if not user_input:
+        return {"reply": "Please enter a valid message."}
+
     try:
-        response = process_query(query)
-        return {"response": response}
+        response = process_query(user_input)
+        return {"reply": response}
+
     except Exception as e:
-        return {"error": str(e)}
+        print("Error:", e)
+        return {"reply": "Something went wrong. Please try again."}
 
 
-# -----------------------
-# VOICE API
-# -----------------------
+# ─────────────────────────────────────────────
+# VOICE API (OPTIONAL BUT GOOD)
+# ─────────────────────────────────────────────
 @app.post("/voice")
 async def voice(file: UploadFile = File(...)):
     try:
@@ -54,13 +63,14 @@ async def voice(file: UploadFile = File(...)):
             "transcribed_text": text,
             "response": response
         }
+
     except Exception as e:
         return {"error": str(e)}
 
 
-# -----------------------
-# SCHEMES API
-# -----------------------
+# ─────────────────────────────────────────────
+# SCHEMES API (FOR CARDS UI)
+# ─────────────────────────────────────────────
 @app.get("/schemes")
 def get_schemes():
     return schemes_data["schemes"]

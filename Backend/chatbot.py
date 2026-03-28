@@ -2,48 +2,61 @@ import os
 import json
 from dotenv import load_dotenv
 from openai import OpenAI
-from deep_translator import GoogleTranslator
+from googletrans import Translator
 from eligibility import check_eligibility
-from io import BytesIO
+
+# ─────────────────────────────────────────────
+# INIT
+# ─────────────────────────────────────────────
 
 load_dotenv()
 
 client = OpenAI()
+translator = Translator()
+
+# Load schemes ONCE
+with open("schemes.json", encoding="utf-8") as f:
+    SCHEMES_DATA = json.load(f)
 
 
-# ---------------------------
-# Translation (SAFE VERSION)
-# ---------------------------
+# ─────────────────────────────────────────────
+# TRANSLATION (SAFE)
+# ─────────────────────────────────────────────
+
 def to_english(text):
-    return GoogleTranslator(source='auto', target='en').translate(text)
+    try:
+        return translator.translate(text, dest="en").text
+    except:
+        return text
+
 
 def to_user_lang(text, lang):
-    return GoogleTranslator(source='en', target=lang).translate(text)
+    try:
+        return translator.translate(text, dest=lang).text
+    except:
+        return text
 
 
-# ---------------------------
-# Speech to Text
-# ---------------------------
-def speech_to_text(audio_bytes):
+# ─────────────────────────────────────────────
+# SPEECH TO TEXT (OPTIONAL)
+# ─────────────────────────────────────────────
 
-    audio_file = BytesIO(audio_bytes)
-    audio_file.name = "voice.wav"
-
+def speech_to_text(audio_file):
     transcript = client.audio.transcriptions.create(
         model="gpt-4o-mini-transcribe",
         file=audio_file
     )
-
     return transcript.text
 
 
-# ---------------------------
-# Extract User Details
-# ---------------------------
+# ─────────────────────────────────────────────
+# EXTRACT USER DETAILS
+# ─────────────────────────────────────────────
+
 def extract_user_details(user_input):
 
     prompt = f"""
-Extract user information and return JSON:
+Extract user details and return ONLY JSON:
 
 {{
  "age": 25,
@@ -54,6 +67,8 @@ Extract user information and return JSON:
  "residence": "rural/urban",
  "hasLand": true/false,
  "hasBankAccount": true/false,
+ "hasRationCard": true/false,
+ "rationCardType": "AAY/PHH/APL/other",
  "isIncomeTaxpayer": false,
  "isGovtEmployee": false
 }}
@@ -80,22 +95,37 @@ Input: {user_input}
             "residence": "rural",
             "hasLand": True,
             "hasBankAccount": True,
+            "hasRationCard": True,
+            "rationCardType": "PHH",
             "isIncomeTaxpayer": False,
             "isGovtEmployee": False
         }
 
-    # defaults
+    # DEFAULT VALUES
     user_data.setdefault("occupation", ["other"])
     user_data.setdefault("hasLand", False)
     user_data.setdefault("hasBankAccount", True)
+    user_data.setdefault("hasRationCard", True)
+    user_data.setdefault("rationCardType", "PHH")
     user_data.setdefault("residence", "rural")
+
+    user_data.setdefault("isProfessional", False)
+    user_data.setdefault("hasOwnHouse", False)
+    user_data.setdefault("isEPFOorESICCovered", False)
+    user_data.setdefault("numberOfChildren", 1)
+    user_data.setdefault("isSecc2011Listed", True)
+    user_data.setdefault("isAadhaarLinked", True)
+    user_data.setdefault("hasLPGConnection", False)
+    user_data.setdefault("receivedGovtFunding", False)
+    user_data.setdefault("category", "General")
 
     return user_data
 
 
-# ---------------------------
-# Format Schemes
-# ---------------------------
+# ─────────────────────────────────────────────
+# FORMAT SCHEMES
+# ─────────────────────────────────────────────
+
 def format_schemes(schemes):
 
     formatted = []
@@ -111,9 +141,10 @@ def format_schemes(schemes):
     return formatted
 
 
-# ---------------------------
-# Explain Schemes
-# ---------------------------
+# ─────────────────────────────────────────────
+# EXPLAIN SCHEMES
+# ─────────────────────────────────────────────
+
 def explain_schemes(user_data, schemes):
 
     formatted = format_schemes(schemes)
@@ -121,19 +152,19 @@ def explain_schemes(user_data, schemes):
     prompt = f"""
 You are a Government Scheme Assistant.
 
-User:
+User Profile:
 {user_data}
 
 Eligible Schemes:
 {formatted}
 
-Explain each scheme simply.
-
-Include:
-- why eligible
+Explain clearly:
+- why user is eligible
 - benefits
-- reasons
-- how to apply
+- documents needed
+- steps to apply
+
+Keep it simple.
 """
 
     response = client.chat.completions.create(
@@ -144,28 +175,34 @@ Include:
     return response.choices[0].message.content
 
 
-# ---------------------------
+# ─────────────────────────────────────────────
 # MAIN FUNCTION
-# ---------------------------
+# ─────────────────────────────────────────────
+
 def process_query(user_input):
 
-    # no language detection (disabled)
+    # Detect language
+    try:
+        lang = translator.detect(user_input).lang
+    except:
+        lang = "en"
+
+    # Translate
     english = to_english(user_input)
 
+    # Extract user data
     user_data = extract_user_details(english)
 
-    with open("schemes.json", encoding="utf-8") as f:
-        schemes_data = json.load(f)
-
-    result = check_eligibility(user_data, schemes_data)
+    # Check eligibility
+    result = check_eligibility(user_data, SCHEMES_DATA)
 
     schemes = result["eligible"]
 
     if not schemes:
-        return "No matching schemes found."
+        return to_user_lang("No matching schemes found for your profile.", lang)
 
+    # Explain
     explanation = explain_schemes(user_data, schemes)
 
-    final = to_user_lang(explanation, "en")
-
-    return final
+    # Translate back
+    return to_user_lang(explanation, lang)
