@@ -191,6 +191,12 @@ def check_scheme_eligibility(user, scheme):
         notes.append("Residence criteria not satisfied")
         passed = False
 
+    # OCCUPATION
+    if e.get("occupation"):
+        if not check_occupation(user.get("occupation"), e.get("occupation")):
+            notes.append("Occupation criteria not satisfied")
+            passed = False
+
     # LAND
     if e.get("land_required") and not user.get("hasLand"):
         notes.append("Land ownership required")
@@ -200,6 +206,21 @@ def check_scheme_eligibility(user, scheme):
     if e.get("bank_account_required") and not user.get("hasBankAccount"):
         notes.append("Bank account required")
         passed = False
+
+    # RATION CARD
+    if e.get("ration_card_required") and not user.get("hasRationCard"):
+        notes.append("Ration card required")
+        passed = False
+
+    # AADHAAR LINK
+    if e.get("aadhaar_linked") and not user.get("isAadhaarLinked"):
+        notes.append("Aadhaar-linked bank account required")
+        passed = False
+
+    # SPECIAL CATEGORY (basic handling)
+    if e.get("special_categories"):
+        if not user.get("category"):
+            notes.append("May require special category eligibility")
 
     # EXCLUSIONS
     exclusions = check_exclusions(user, e.get("exclusions"))
