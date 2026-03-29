@@ -1,195 +1,179 @@
-// --- DOM Elements ---
-const navBrowse = document.getElementById('nav-browse');
-const navChat = document.getElementById('nav-chat');
-const sectionBrowse = document.getElementById('browse-section');
-const sectionChat = document.getElementById('chat-section');
+// ===============================
+// GLOBALS
+// ===============================
+const chatFeed = document.getElementById("chat-feed");
+const input = document.getElementById("chat-input");
+const sendBtn = document.getElementById("send-btn");
 
-const schemesGrid = document.getElementById('schemes-grid');
-const chatContainer = document.getElementById('chat-container');
-const chatInput = document.getElementById('chat-input');
-const sendBtn = document.getElementById('send-btn');
-const micBtn = document.getElementById('mic-btn');
-const langToggle = document.getElementById('lang-toggle');
-const typingIndicator = document.getElementById('typing-indicator');
 
-// Modal Elements
-const modalOverlay = document.getElementById('scheme-modal');
-const modalClose = document.getElementById('modal-close');
-const modalCategory = document.getElementById('modal-category');
-const modalTitle = document.getElementById('modal-title');
-const modalDesc = document.getElementById('modal-desc');
-const modalEligibility = document.getElementById('modal-eligibility');
-const modalBenefits = document.getElementById('modal-benefits');
-const modalDocs = document.getElementById('modal-docs');
-const modalApply = document.getElementById('modal-apply');
+// ===============================
+// SEND MESSAGE FUNCTION
+// ===============================
+function sendMessage() {
+    const message = input.value.trim();
 
-// State
-let isEnglish = true;
-let schemesDB = [];
+    if (!message) return;
 
-// --- Navigation ---
-function switchTab(tab) {
-    if (tab === 'browse') {
-        navBrowse.classList.add('active');
-        navChat.classList.remove('active');
-        sectionBrowse.classList.add('active');
-        sectionChat.classList.remove('active');
-    } else {
-        navChat.classList.add('active');
-        navBrowse.classList.remove('active');
-        sectionChat.classList.add('active');
-        sectionBrowse.classList.remove('active');
-        scrollToBottom();
-    }
-}
-navBrowse.onclick = () => switchTab('browse');
-navChat.onclick = () => switchTab('chat');
+    addUserMessage(message);
+    input.value = "";
 
-// --- Load Schemes from Backend ---
-async function loadSchemes() {
-    try {
-        const res = await fetch(`${BASE_URL}/schemes`);
-        schemesDB = await res.json();
-        renderBrowseGrid();
-    } catch (err) {
-        console.error("Error loading schemes:", err);
-    }
-}
-
-// --- Render Grid ---
-function renderBrowseGrid() {
-    schemesGrid.innerHTML = schemesDB.map(s => `
-        <div class="scheme-card">
-            <span class="badge">${s.category}</span>
-            <h3>${s.scheme_name}</h3>
-            <p class="short-desc">${s.benefits.summary}</p>
-            <button onclick="openModal('${s.scheme_id}')">
-                ${isEnglish ? 'View Details' : 'विवरण देखें'}
-            </button>
+    // Loading indicator
+    const loaderDiv = document.createElement("div");
+    loaderDiv.className = "message ai-message loading-msg";
+    loaderDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fa-solid fa-robot"></i>
         </div>
-    `).join('');
-}
-
-// --- Modal ---
-function openModal(id) {
-    const s = schemesDB.find(x => x.scheme_id === id);
-    if (!s) return;
-
-    modalCategory.textContent = s.category;
-    modalTitle.textContent = s.scheme_name;
-    modalDesc.textContent = s.benefits.summary;
-
-    modalEligibility.innerHTML = `
-        <li>Gender: ${s.eligibility.gender}</li>
-        <li>Income Limit: ${s.eligibility.annual_income_limit || 'No limit'}</li>
+        <div class="message-content">
+            <p class="text-bubble"><i class="fa-solid fa-ellipsis fa-fade"></i> Processing...</p>
+        </div>
     `;
-
-    modalBenefits.innerHTML = `
-        <li>${s.benefits.summary}</li>
-    `;
-
-    modalDocs.innerHTML = s.documents_required.map(d => `<li>${d}</li>`).join('');
-
-    modalApply.href = s.application.apply_url || s.official_url;
-
-    modalOverlay.classList.add('open');
-}
-
-modalClose.onclick = () => modalOverlay.classList.remove('open');
-modalOverlay.onclick = e => {
-    if (e.target === modalOverlay) modalOverlay.classList.remove('open');
-};
-
-// --- Chat Functions ---
-function scrollToBottom() {
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-function appendUserMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'message user';
-    div.innerHTML = `<div class="bubble"><p>${text}</p></div>`;
-    chatContainer.insertBefore(div, typingIndicator);
-}
-
-function appendAIMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'message ai';
-    div.innerHTML = `
-        <div class="avatar"><i class="fa-solid fa-robot"></i></div>
-        <div class="bubble"><p>${text}</p></div>
-    `;
-    chatContainer.insertBefore(div, typingIndicator);
-}
-
-// --- Chat API ---
-async function handleSend() {
-    const text = chatInput.value.trim();
-    if (!text) return;
-
-    appendUserMessage(text);
-    chatInput.value = '';
-
-    typingIndicator.style.display = 'flex';
+    chatFeed.appendChild(loaderDiv);
     scrollToBottom();
 
-    try {
-        const res = await fetch(`${BASE_URL}/chat?query=${encodeURIComponent(text)}`);
-        const data = await res.json();
+    fetch("http://127.0.0.1:8000/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: message,
+            session_id: "user1"
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            chatFeed.removeChild(loaderDiv); // Remove loader
+            addBotMessage(data.text);
 
-        typingIndicator.style.display = 'none';
-        appendAIMessage(data.response);
-
-    } catch (err) {
-        typingIndicator.style.display = 'none';
-        appendAIMessage("Server error. Please try again.");
-    }
+            if (data.schemes && data.schemes.length > 0) {
+                renderSchemeCards(data.schemes);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            chatFeed.removeChild(loaderDiv);
+            addBotMessage("⚠️ Server error. Please try again.");
+        });
 }
 
-// --- Voice ---
-micBtn.addEventListener('click', async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
 
-    let chunks = [];
-    recorder.start();
+// ===============================
+// EVENT LISTENERS (FIXED)
+// ===============================
 
-    micBtn.classList.add('recording');
+// Send button click
+sendBtn.addEventListener("click", sendMessage);
 
-    recorder.ondataavailable = e => chunks.push(e.data);
-
-    setTimeout(() => recorder.stop(), 3000);
-
-    recorder.onstop = async () => {
-        micBtn.classList.remove('recording');
-
-        const blob = new Blob(chunks, { type: 'audio/wav' });
-        const form = new FormData();
-        form.append("file", blob);
-
-        const res = await fetch(`${BASE_URL}/voice`, {
-            method: "POST",
-            body: form
-        });
-
-        const data = await res.json();
-
-        appendUserMessage(data.transcribed_text);
-        appendAIMessage(data.response);
-    };
+// Enter key press
+input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+    }
 });
 
-// --- Events ---
-sendBtn.onclick = handleSend;
-chatInput.addEventListener('keypress', e => {
-    if (e.key === 'Enter') handleSend();
-});
 
-// --- Language Toggle ---
-langToggle.onclick = () => {
-    isEnglish = !isEnglish;
-    renderBrowseGrid();
-};
+// ===============================
+// USER MESSAGE UI
+// ===============================
+function addUserMessage(text) {
+    const div = document.createElement("div");
+    div.className = "message user-message";
 
-// --- Init ---
-loadSchemes();
+    div.innerHTML = `
+        <div class="message-content">
+            <p class="text-bubble">${text}</p>
+        </div>
+    `;
+
+    chatFeed.appendChild(div);
+    scrollToBottom();
+}
+
+
+// ===============================
+// BOT MESSAGE UI
+// ===============================
+function addBotMessage(text) {
+    const div = document.createElement("div");
+    div.className = "message ai-message";
+
+    div.innerHTML = `
+        <div class="message-avatar">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="message-content">
+            <p class="text-bubble">${text}</p>
+        </div>
+    `;
+
+    chatFeed.appendChild(div);
+    scrollToBottom();
+}
+
+
+// ===============================
+// SCHEME CARDS (FINAL)
+// ===============================
+function renderSchemeCards(schemes) {
+    const container = document.createElement("div");
+    container.className = "schemes-container";
+
+    schemes.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "scheme-card";
+
+        card.innerHTML = `
+            <div class="card-header">
+                <div class="scheme-icon"><i class="fa-solid fa-file-contract"></i></div>
+                <h3 class="scheme-title">${s.name}</h3>
+            </div>
+
+            <div class="card-body">
+                <p><b>Benefits:</b> ${s.benefit}</p>
+
+                ${s.documents && s.documents.length > 0 ? `
+                    <div class="docs-section">
+                        <b>Documents Required:</b>
+                        <ul>
+                            ${s.documents.map(doc => `<li>${doc}</li>`).join("")}
+                        </ul>
+                    </div>
+                ` : ""}
+
+                ${s.steps && s.steps.length > 0 ? `
+                    <div class="steps-section">
+                        <b>How to Apply:</b>
+                        <ol>
+                            ${s.steps.map(step => `<li>${step}</li>`).join("")}
+                        </ol>
+                    </div>
+                ` : ""}
+
+                <div class="eligibility-tag">
+                    <i class="fa-solid fa-check-circle"></i> ${s.reason}
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <a href="${s.apply}" target="_blank" class="apply-btn">
+                    Apply Now <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i>
+                </a>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+
+    chatFeed.appendChild(container);
+    scrollToBottom();
+}
+
+
+// ===============================
+// SCROLL FIX
+// ===============================
+function scrollToBottom() {
+    chatFeed.scrollTop = chatFeed.scrollHeight;
+}
